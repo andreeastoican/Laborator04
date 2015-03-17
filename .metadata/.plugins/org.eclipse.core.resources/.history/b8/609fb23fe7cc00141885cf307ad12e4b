@@ -1,0 +1,65 @@
+package ro.pub.cs.systems.pdsd.lab04.contactsmanager;
+
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+ 
+public class BasicDetailsFragment extends Fragment {
+ 
+  @Override
+  public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle state) {
+    return layoutInflater.inflate(R.layout.fragment_basic_details, container, false);
+  }
+  
+  private AdditionalDetailsFragment additionalDetailsFragment = null;
+  
+  @Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onActivityCreated(savedInstanceState);
+		
+		Button showHideDetails = (Button)getActivity().findViewById(R.id.id_additional_filed);
+		Button saveButton = (Button)getActivity().findViewById(R.id.id_save);
+		Button cancelButton = (Button)getActivity().findViewById(R.id.id_cancel);
+		
+		showHideDetails.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+				FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+				if (additionalDetailsFragment == null) {
+				  fragmentTransaction.add(R.id.id_frame2, new AdditionalDetailsFragment());
+				  ((Button)v).setText(getActivity().getResources().getString(R.string.hide_additional_fields));
+				  fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_ENTER_MASK);
+				} else {
+					Toast.makeText(getActivity(), "test", Toast.LENGTH_SHORT).show();
+				  fragmentTransaction.remove(additionalDetailsFragment);
+				  ((Button)v).setText(getActivity().getResources().getString(R.string.show_additional_fields));
+				  fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_EXIT_MASK);
+				}
+				fragmentTransaction.commit();
+			}
+		});
+		
+		saveButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				EditText editTextName = (EditText) getActivity().findViewById(R.id.id_name);
+				String name = editTextName.getText().toString();
+				
+			}
+		});
+	}
+ 
+}

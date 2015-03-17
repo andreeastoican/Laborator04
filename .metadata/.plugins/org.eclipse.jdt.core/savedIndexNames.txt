@@ -1,0 +1,4 @@
+INDEX VERSION 1.127+E:\FACULTATE\ANUL4\Semestrul2\PDSD\Laboratoare\Laborator04\.metadata\.plugins\org.eclipse.jdt.core
+1240692741.index
+52602730.index
+555298128.index
