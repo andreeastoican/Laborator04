@@ -1,8 +1,10 @@
 package ro.pub.cs.systems.pdsd.lab04.contactsmanager;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+import android.provider.SyncStateContract.Constants;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.Menu;
@@ -11,6 +13,8 @@ import android.view.MenuItem;
 
 public class ContactsManagerActivity extends FragmentActivity{
 
+	final private static int CONTACTS_MANAGER_REQUEST_CODE = 2015;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,4 +44,13 @@ public class ContactsManagerActivity extends FragmentActivity{
         }
         return super.onOptionsItemSelected(item);
     }
+    
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+	switch(requestCode) {
+	  case CONTACTS_MANAGER_REQUEST_CODE:
+	    setResult(resultCode, new Intent());
+	    finish();
+	    break;
+	  }
+	}
 }

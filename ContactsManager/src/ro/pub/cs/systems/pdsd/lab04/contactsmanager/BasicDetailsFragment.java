@@ -34,6 +34,18 @@ public class BasicDetailsFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
 		
+		Intent intent = getActivity().getIntent();
+		if (intent != null) {
+		  EditText editTextPhone = (EditText)getActivity().findViewById(R.id.id_phone);
+		  String phone = intent.getStringExtra("ro.pub.cs.systems.pdsd.lab04.contactsmanager.PHONE_NUMBER_KEY");
+		  if (phone != null) {
+			  editTextPhone.setText(phone);
+		  } else {
+		    Activity activity = getActivity();
+		    Toast.makeText(activity, activity.getResources().getString(R.string.phone_error), Toast.LENGTH_LONG).show();
+		  }
+		}
+		
 		Button showHideDetails = (Button)getActivity().findViewById(R.id.id_additional_filed);
 		Button saveButton = (Button)getActivity().findViewById(R.id.id_save);
 		Button cancelButton = (Button)getActivity().findViewById(R.id.id_cancel);
@@ -138,18 +150,7 @@ public class BasicDetailsFragment extends Fragment {
 				getActivity().setResult(Activity.RESULT_CANCELED, new Intent());
 			}
 		});
-		
-		Intent intent = getActivity().getIntent();
-		if (intent != null) {
-		  EditText editTextPhone = (EditText)getActivity().findViewById(R.id.id_phone);
-		  String phone = intent.getStringExtra("ro.pub.cs.systems.pdsd.lab04.contactsmanager.PHONE_NUMBER_KEY");
-		  if (phone != null) {
-			  editTextPhone.setText(phone);
-		  } else {
-		    Activity activity = getActivity();
-		    Toast.makeText(activity, activity.getResources().getString(R.string.phone_error), Toast.LENGTH_LONG).show();
-		  }
-		} 
+		 
 	}
  
 }
