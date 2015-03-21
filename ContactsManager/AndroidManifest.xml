@@ -25,6 +25,11 @@
 		        <action android:name="ro.pub.cs.systems.pdsd.lab04.contactsmanager.intent.action.ContactsManagerActivity" />
 		        <category android:name="android.intent.category.DEFAULT" />
 		      </intent-filter>
+		      <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

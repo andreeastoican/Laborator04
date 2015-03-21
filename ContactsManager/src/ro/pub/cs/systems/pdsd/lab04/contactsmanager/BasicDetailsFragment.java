@@ -11,6 +11,7 @@ import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,29 +77,55 @@ public class BasicDetailsFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
+
+				String name = null;
+				String phone = null;
+				String email = null;
+				String address = null;
+				String jobTitle = null;
+				String company = null;
+				String website = null;
+				String im = null;
+				
 				EditText editTextName = (EditText) getActivity().findViewById(R.id.id_name);
-				String name = editTextName.getText().toString();
+				if(editTextName != null) {
+				name = editTextName.getText().toString();
+				}
 				
 				EditText editTextPhone = (EditText)getActivity().findViewById(R.id.id_phone);
-				String phone = editTextPhone.getText().toString();
+				if(editTextPhone != null) {
+					phone = editTextPhone.getText().toString();
+				}
 				
 				EditText editTextEmail = (EditText)getActivity().findViewById(R.id.id_email);
-				String email = editTextEmail.getText().toString();
+				if(editTextEmail != null) {
+					email = editTextEmail.getText().toString();
+				}
 				
 				EditText editTextAdd = (EditText)getActivity().findViewById(R.id.id_address);
-				String address = editTextAdd.getText().toString();
+				if(editTextAdd != null) {
+					address = editTextAdd.getText().toString();
+				}
 				
 				EditText editTextJobTitle = (EditText)getActivity().findViewById(R.id.id_job);
-				String jobTitle = editTextJobTitle.getText().toString();
+				if(editTextJobTitle != null) {
+					jobTitle = editTextJobTitle.getText().toString();
+				}
 				
 				EditText editTextCompany = (EditText)getActivity().findViewById(R.id.id_company);
-				String company = editTextCompany.getText().toString();
+				if(editTextCompany != null) {
+					company = editTextCompany.getText().toString();
+				}
 				
 				EditText editTextWebSite = (EditText)getActivity().findViewById(R.id.id_website);
-				String website = editTextWebSite.getText().toString();
+				if(editTextWebSite != null) {
+					website = editTextWebSite.getText().toString();
+				}
 				
 				EditText editTextIM = (EditText)getActivity().findViewById(R.id.id_im);
-				String im = editTextIM.getText().toString();
+				if(editTextIM != null) {
+					im = editTextIM.getText().toString();
+				}
 				
 				Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION);
 				intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
